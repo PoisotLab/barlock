@@ -1,0 +1,58 @@
+\documentclass[11pt]{article}
+
+\usepackage[letterpaper,margin=2cm]{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[english]{babel}
+\usepackage{lineno}
+\usepackage{cleveref}
+
+\makeatletter
+\def\maxwidth{%
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\title{$title$}
+\author{}
+\date{}
+
+\begin{document}
+{\LARGE $title$}
+
+\medskip
+
+$for(creators)$
+{\small $creators.givennames$~\textsc{$creators.familyname$}}\\
+{\small \emph{$creators.affiliation$}$if(creators.email)$ --- \texttt{$creators.email$}$endif$}\\
+\\
+$endfor$
+
+
+
+\begin{abstract}
+$description$
+\end{abstract}
+
+\setpagewiselinenumbers
+\modulolinenumbers[2]
+\linenumbers
+\doublespace
+
+$body$
+
+$refs$
+\end{document}
+
+% pandoc manuscript.md -o ms.pdf --filter pandoc-xnos --template=template.tex --metadata-file=.zenodo.json --bibliography=references.json --csl=biotropica.csl
